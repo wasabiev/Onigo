@@ -1,0 +1,62 @@
+##Plugin Information##
+name: Onigo
+version: 1.2
+main: wasabiev.Onigo.Onigo
+description: Japanese Onigokko Plugin for Wasabi-Server
+author: wasabiev
+##Commands##
+commands:
+    onigo:
+      usage: /onigo
+      aliases: [oni]
+      description: To See Onigo Plugin Help
+##Permissions##
+permissions:
+    onigo.admin.reload:
+      default: op
+      description: Reload config.yml
+    onigo.admin.ready:
+      default: op
+      description: Ready onigo
+    onigo.admin.chooseoni:
+      default: op
+      description: Choose oni player manually
+    onigo.admin.start:
+      default: op
+      description: Start onigo
+    onigo.admin.stop:
+      default: op
+      description: Stop onigo compulsory
+    onigo.admin.check:
+      default: op
+      description: Check setting and status
+    onigo.user.join:
+      default: op
+      description: Join onigo
+    onigo.user.leave:
+      default: op
+      description: Leave onigo
+    onigo.user.list:
+      default: op
+      description: Show joined player list
+    onigo.user.tp:
+      default: op
+      description: Teleport waitlocation
+    onigo.user.timer:
+      default: op
+      description: Show remain game timer
+    onigo.user.teamchat:
+      default: op
+      description: Send chat to team players
+    onigo.admin.kick:
+      default: op
+      description: Kick player from Onigo
+    onigo.admin.tp.wait:
+      default: op
+      description: Teleport WaitLocation
+    onigo.admin.tp.setwait:
+      default: op
+      description: Set Teleport WaitLocation
+    onigo.user.chat:
+      default: op
+      description: Semd chat to players
