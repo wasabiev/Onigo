@@ -5,8 +5,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/labprojecteclipse_craftbukkit/dynmap-api.jar"/>
-	<classpathentry kind="lib" path="D:/labprojecteclipse_craftbukkit/craftbukkit-1.4.2-R0.2.jar"/>
 	<classpathentry kind="src" output="target/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -29,5 +27,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/taiga/Documents/workspace/dynmap-api-1.9.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
