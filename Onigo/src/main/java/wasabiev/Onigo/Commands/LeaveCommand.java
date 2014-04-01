@@ -4,6 +4,7 @@ import org.bukkit.command.CommandException;
 
 import wasabiev.Onigo.Game;
 import wasabiev.Onigo.SendMessage;
+import wasabiev.Onigo.Hook.Dynmap;
 
 public class LeaveCommand extends BaseCommand {
 
@@ -13,6 +14,8 @@ public class LeaveCommand extends BaseCommand {
 		argLength = 0;
 		usage = "<- leave the game";
 	}
+
+	private Dynmap dynmap;
 
 	@Override
 	public boolean execute() throws CommandException {
@@ -29,6 +32,11 @@ public class LeaveCommand extends BaseCommand {
 					return true;
 				} else {
 					SendMessage.messageAll(playerName + "は鬼ごっこから離脱しました");
+
+					// Dynmapに表示
+					dynmap.showPlayer(playerName);
+
+					// プレイヤーリストから削除
 					Game.playersInGame.remove(playerName);
 					// 鬼役で参加していた場合
 					if (Game.oniPlayersInGame.contains(playerName)) {

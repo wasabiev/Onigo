@@ -12,9 +12,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffectType;
 
-//import org.dynmap.DynmapAPI;
-
-;
+import wasabiev.Onigo.Hook.Dynmap;
 
 public class Game {
 
@@ -24,6 +22,7 @@ public class Game {
 	private static final String msgPrefix = Onigo.msgPrefix;
 
 	private static final Game game = new Game();
+	private Dynmap dynmap;
 
 	public static Game getGame() {
 		return game;
@@ -54,9 +53,6 @@ public class Game {
 	private int timerThreadID = -1; // タイマータスクのID
 	public int gameTimeInSec = 600; // 1ゲームの制限時間
 	public int remainSec = gameTimeInSec; // 1ゲームの残り時間
-
-	// TODO:dynmap連携
-	// private DynmapAPI dAPI;
 
 	/**
 	 * ゲームデータの初期化
@@ -186,9 +182,6 @@ public class Game {
 			if (player == null || !player.isOnline())
 				continue;
 
-			// TODO:dynmap-hide
-			// dAPI.setPlayerVisiblity(player, false);
-
 			// ゲームモード強制変更
 			player.setGameMode(GameMode.SURVIVAL);
 
@@ -216,6 +209,11 @@ public class Game {
 
 		SendMessage.message(player, null, ChatColor.WHITE + "あなたは" + ChatColor.RED + "鬼役" + ChatColor.WHITE + "です。");
 		SendMessage.message(player, null, "60秒間移動することが出来ません。");
+
+		// Dynmapから参加者全員を見えなくする
+		for (String set : playersInGame) {
+			dynmap.hidePlayer(set);
+		}
 
 		// スタートタイマーの呼び出し
 		starttimerThreadID = Onigo.plugin.getServer().getScheduler()
@@ -361,6 +359,9 @@ public class Game {
 			}
 			// 待機場所に移動させる
 			TeleportMethods.tpWaitLocation(set);
+
+			//Dynmapに参加者を表示させる
+			dynmap.showPlayer(set);
 		}
 
 		// 初期化

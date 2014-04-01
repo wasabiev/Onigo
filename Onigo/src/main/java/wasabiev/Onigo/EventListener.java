@@ -11,9 +11,13 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import wasabiev.Onigo.Hook.Dynmap;
+
 public class EventListener implements Listener {
 
 	public Onigo plugin;
+
+	private Dynmap dynmap;
 
 	public EventListener(Onigo Instance) {
 		plugin = Instance;
@@ -98,6 +102,10 @@ public class EventListener implements Listener {
 			}
 			Game.playersInGame.remove(playerName);
 			SendMessage.messageAll(ChatColor.WHITE + "プレイヤー" + ChatColor.YELLOW + playerName + ChatColor.WHITE + "がゲームから抜けました。");
+
+			// Dynmapの非表示解除
+			dynmap.showPlayer(playerName);
+
 			if (Game.playersInGame.size() == 0) {
 				SendMessage.messageAll(ChatColor.RED + "全ての参加プレイヤー居なくなったためゲームを終了します。");
 				Game.getGame().forcedFinish();
@@ -131,8 +139,13 @@ public class EventListener implements Listener {
 		if ((Game.getGame().started || Game.getGame().before_started) && Game.playersInGame.contains(playerName)) {
 			// 死亡者を含む全体へメッセージ送信
 			SendMessage.messageAll(ChatColor.WHITE + "ゲーム中にプレイヤーが死亡したため、プレイヤー" + ChatColor.YELLOW + playerName + ChatColor.WHITE + "がゲームから抜けました。");
+
 			// プレイヤーリストから削除
 			Game.playersInGame.remove(playerName);
+
+			// Dynmapの非表示解除
+			dynmap.showPlayer(playerName);
+
 			if (Game.playersInGame.size() == 0) {
 				SendMessage.messageAll(ChatColor.RED + "全ての参加プレイヤー居なくなったためゲームを終了します。");
 				Game.getGame().forcedFinish();
