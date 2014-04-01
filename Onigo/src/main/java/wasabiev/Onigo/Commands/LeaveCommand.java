@@ -15,8 +15,6 @@ public class LeaveCommand extends BaseCommand {
 		usage = "<- leave the game";
 	}
 
-	private Dynmap dynmap;
-
 	@Override
 	public boolean execute() throws CommandException {
 		// ゲームに参加していない場合
@@ -34,7 +32,7 @@ public class LeaveCommand extends BaseCommand {
 					SendMessage.messageAll(playerName + "は鬼ごっこから離脱しました");
 
 					// Dynmapに表示
-					dynmap.showPlayer(playerName);
+					Dynmap.showPlayer(playerName);
 
 					// プレイヤーリストから削除
 					Game.playersInGame.remove(playerName);

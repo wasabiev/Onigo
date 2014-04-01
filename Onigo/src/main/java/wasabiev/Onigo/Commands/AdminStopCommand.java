@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 
 import wasabiev.Onigo.Game;
 import wasabiev.Onigo.SendMessage;
+import wasabiev.Onigo.Hook.Dynmap;
 
 public class AdminStopCommand extends BaseCommand {
 
@@ -19,6 +20,11 @@ public class AdminStopCommand extends BaseCommand {
 		// メッセージ送信
 		SendMessage.message(player, null, ChatColor.RED + "Onigo plugin has been forced-finish!");
 		SendMessage.messageAll("鬼ごっこを初期化し強制終了しました。");
+		// Dynmap
+		for (String set : Game.playersInGame) {
+			// Dynmapに表示
+			Dynmap.showPlayer(set);
+		}
 		// 強制終了
 		Game.getGame().forcedFinish();
 		return true;

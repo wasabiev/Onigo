@@ -1,6 +1,6 @@
 ##Plugin Information##
 name: Onigo
-version: 1.2
+version: 1.3
 main: wasabiev.Onigo.Onigo
 description: Japanese Onigokko Plugin for Wasabi-Server
 author: wasabiev

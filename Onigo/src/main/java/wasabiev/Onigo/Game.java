@@ -22,7 +22,6 @@ public class Game {
 	private static final String msgPrefix = Onigo.msgPrefix;
 
 	private static final Game game = new Game();
-	private Dynmap dynmap;
 
 	public static Game getGame() {
 		return game;
@@ -212,7 +211,7 @@ public class Game {
 
 		// Dynmapから参加者全員を見えなくする
 		for (String set : playersInGame) {
-			dynmap.hidePlayer(set);
+			Dynmap.hidePlayer(set);
 		}
 
 		// スタートタイマーの呼び出し
@@ -361,7 +360,7 @@ public class Game {
 			TeleportMethods.tpWaitLocation(set);
 
 			//Dynmapに参加者を表示させる
-			dynmap.showPlayer(set);
+			Dynmap.showPlayer(set);
 		}
 
 		// 初期化

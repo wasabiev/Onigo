@@ -17,8 +17,6 @@ public class EventListener implements Listener {
 
 	public Onigo plugin;
 
-	private Dynmap dynmap;
-
 	public EventListener(Onigo Instance) {
 		plugin = Instance;
 	}
@@ -104,7 +102,7 @@ public class EventListener implements Listener {
 			SendMessage.messageAll(ChatColor.WHITE + "プレイヤー" + ChatColor.YELLOW + playerName + ChatColor.WHITE + "がゲームから抜けました。");
 
 			// Dynmapの非表示解除
-			dynmap.showPlayer(playerName);
+			Dynmap.showPlayer(playerName);
 
 			if (Game.playersInGame.size() == 0) {
 				SendMessage.messageAll(ChatColor.RED + "全ての参加プレイヤー居なくなったためゲームを終了します。");
@@ -144,7 +142,7 @@ public class EventListener implements Listener {
 			Game.playersInGame.remove(playerName);
 
 			// Dynmapの非表示解除
-			dynmap.showPlayer(playerName);
+			Dynmap.showPlayer(playerName);
 
 			if (Game.playersInGame.size() == 0) {
 				SendMessage.messageAll(ChatColor.RED + "全ての参加プレイヤー居なくなったためゲームを終了します。");
